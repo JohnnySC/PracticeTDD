@@ -55,14 +55,14 @@ class StackTest {
 
     @Test
     fun `test pop twice`() {
-        val stack = MyStack.Base<CustomObject>(maxCount = 1)
+        val stack = MyStack.Base<CustomObject>(maxCount = 2)
         stack.push(item = CustomObject("1"))
         stack.push(item = CustomObject("2"))
         var actual = stack.pop()
-        var expected = CustomObject("1")
+        var expected = CustomObject("2")
         assertEquals(expected, actual)
         actual = stack.pop()
-        expected = CustomObject("2")
+        expected = CustomObject("1")
         assertEquals(expected, actual)
     }
 
