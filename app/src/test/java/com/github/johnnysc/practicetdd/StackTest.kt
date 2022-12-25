@@ -52,6 +52,32 @@ class StackTest {
         val expected = CustomObject("1")
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun `test pop twice`() {
+        val stack = MyStack.Base<CustomObject>(maxCount = 1)
+        stack.push(item = CustomObject("1"))
+        stack.push(item = CustomObject("2"))
+        var actual = stack.pop()
+        var expected = CustomObject("1")
+        assertEquals(expected, actual)
+        actual = stack.pop()
+        expected = CustomObject("2")
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun `test push and pop twice`() {
+        val stack = MyStack.Base<CustomObject>(maxCount = 1)
+        stack.push(item = CustomObject("1"))
+        var actual = stack.pop()
+        var expected = CustomObject("1")
+        assertEquals(expected, actual)
+        stack.push(item = CustomObject("2"))
+        actual = stack.pop()
+        expected = CustomObject("2")
+        assertEquals(expected, actual)
+    }
 }
 
 private data class CustomObject(val id: String)
