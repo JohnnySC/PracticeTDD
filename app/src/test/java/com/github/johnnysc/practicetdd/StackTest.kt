@@ -59,7 +59,7 @@ class StackTest {
         try {
             stack.push(item = CustomObject("2"))
         } catch (e: Exception) {
-            assertEquals(true, e is IllegalStateException)
+            assertEquals(IllegalStateException::class.java, e.javaClass)
             assertEquals("Stack overflow exception, maximum is 1", e.message)
         }
     }
