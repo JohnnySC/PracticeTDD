@@ -30,7 +30,7 @@ class ContainsStringTest {
         assertEquals(6, forWrapper.count)
     }
 
-    class TestForWrapper(private val forWrapper: For = For.Base()) : For {
+    private class TestForWrapper(private val forWrapper: For = For.Base()) : For {
 
         var count = 0
 
