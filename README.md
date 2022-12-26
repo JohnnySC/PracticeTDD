@@ -32,3 +32,8 @@ task/010-int-validations валидации интов используя шаб
 task/011-simple-callback простой колбек
 
 task/012-lottery лотерейный билет (https://youtu.be/up1dhKWo6hA)
+
+task/013-delay-coroutine задержка времени корутины (принудительно не отдаем ответ от корутины указанное время)
+
+
+
