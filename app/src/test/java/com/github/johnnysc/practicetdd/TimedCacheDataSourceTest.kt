@@ -14,7 +14,7 @@ class TimedCacheDataSourceTest {
         val cacheDataSource: CacheDataSource =
             CacheDataSource.Timed(now = now, lifeTimeMillis = 1000)
 
-        cacheDataSource.add(SimpleData("one"))
+        cacheDataSource.add(item = SimpleData("one"))
 
         now.time = 990
 
