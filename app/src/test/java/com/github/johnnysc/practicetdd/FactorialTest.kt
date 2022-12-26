@@ -2,8 +2,6 @@ package com.github.johnnysc.practicetdd
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.lang.IllegalArgumentException
-import java.lang.IllegalStateException
 import java.math.BigInteger
 
 /**
@@ -14,7 +12,8 @@ class FactorialTest {
     @Test
     fun test_integers() {
         val sourceList = listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-        val expectedList = listOf(1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600)
+        val expectedList =
+            listOf(1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600)
 
         val factorial = Factorial.Int()
         sourceList.forEachIndexed { index, item ->
@@ -48,39 +47,63 @@ class FactorialTest {
     }
 
     @Test
-    fun test_int() {
+    fun test_int_maximum() {
         val int = TestInt()
         val double = TestDouble()
         val bigInteger = TestBigInteger()
         val factory = Factorial.Factory(int, double, bigInteger)
-        factory.value(5)
-        assertEquals(5, int.value)
+        factory.value(12)
+        assertEquals(12, int.value)
         assertEquals(0.0.toString(), double.value.toString())
         assertEquals(java.math.BigInteger.ZERO, bigInteger.value)
     }
 
     @Test
-    fun test_double() {
+    fun test_double_minimum() {
         val int = TestInt()
         val double = TestDouble()
         val bigInteger = TestBigInteger()
         val factory = Factorial.Factory(int, double, bigInteger)
-        factory.value(15)
+        factory.value(13)
         assertEquals(0, int.value)
-        assertEquals(15.0.toString(), double.value.toString())
+        assertEquals(13.0.toString(), double.value.toString())
         assertEquals(java.math.BigInteger.ZERO, bigInteger.value)
     }
 
     @Test
-    fun test_big_integer() {
+    fun test_double_maximum() {
         val int = TestInt()
         val double = TestDouble()
         val bigInteger = TestBigInteger()
         val factory = Factorial.Factory(int, double, bigInteger)
-        factory.value(1500)
+        factory.value(170)
+        assertEquals(0, int.value)
+        assertEquals(170.0.toString(), double.value.toString())
+        assertEquals(java.math.BigInteger.ZERO, bigInteger.value)
+    }
+
+    @Test
+    fun test_big_integer_minimum() {
+        val int = TestInt()
+        val double = TestDouble()
+        val bigInteger = TestBigInteger()
+        val factory = Factorial.Factory(int, double, bigInteger)
+        factory.value(171)
         assertEquals(0, int.value)
         assertEquals(0.0.toString(), double.value.toString())
-        assertEquals(java.math.BigInteger.valueOf(1500), bigInteger.value)
+        assertEquals(java.math.BigInteger.valueOf(171), bigInteger.value)
+    }
+
+    @Test
+    fun test_big_integer_maximum() {
+        val int = TestInt()
+        val double = TestDouble()
+        val bigInteger = TestBigInteger()
+        val factory = Factorial.Factory(int, double, bigInteger)
+        factory.value(11000)
+        assertEquals(0, int.value)
+        assertEquals(0.0.toString(), double.value.toString())
+        assertEquals(java.math.BigInteger.valueOf(11000), bigInteger.value)
     }
 
     @Test(expected = IllegalStateException::class)
@@ -89,7 +112,7 @@ class FactorialTest {
         val double = TestDouble()
         val bigInteger = TestBigInteger()
         val factory = Factorial.Factory(int, double, bigInteger)
-        factory.value(12000)
+        factory.value(number = 11001)
     }
 
     private class TestInt : Factorial<kotlin.Int> {
