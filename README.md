@@ -51,5 +51,6 @@ task-020/chain-responsibility паттерн цепочка обязанност
 
 task/021-interactor-parser непростая задача на взаимосвязь парсера с интерактором (из проекта ЕСР)
 
-task/022-rx-viewmodel RxJava2 простая цепочка и тест на ViewModel
+task/022-rx-viewmodel RxJava2 простая цепочка и тест на ViewModel (https://youtu.be/cNXVzCUN5p8)
 
+task/023-lambda юнит тесты с лямбдой как аргументом в конструкторе класса (https://youtu.be/KRpJPGGxmOs)
