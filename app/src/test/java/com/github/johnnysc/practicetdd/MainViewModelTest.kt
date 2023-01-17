@@ -27,6 +27,8 @@ class MainViewModelTest {
         viewModel.notifyChanges()
         assertEquals("3", observer.list[2])
         assertEquals(3, observer.list.size)
+        viewModel.notifyChanges()
+        assertEquals(3, observer.list.size)
     }
 }
 
