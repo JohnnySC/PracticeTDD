@@ -9,7 +9,7 @@ import org.junit.Test
 class MainViewModelTest {
 
     @Test
-    fun test() {
+    fun test_single_live_event() {
         val myLiveData: MyObservable<String> = MyObservable.SingleLiveEvent()
         val observer = FakeObserver()
         val viewModel = MainViewModel(liveData = myLiveData)
@@ -29,6 +29,30 @@ class MainViewModelTest {
         assertEquals(3, observer.list.size)
         viewModel.notifyChanges()
         assertEquals(3, observer.list.size)
+    }
+
+    @Test
+    fun test_base() {
+        val myLiveData: MyObservable<String> = MyObservable.Base()
+        val observer = FakeObserver()
+        val viewModel = MainViewModel(liveData = myLiveData)
+        viewModel.updateObserver(observer = observer)
+        viewModel.go()
+        assertEquals("1", observer.list[0])
+        assertEquals(1, observer.list.size)
+        viewModel.go()
+        assertEquals("2", observer.list[1])
+        assertEquals(2, observer.list.size)
+        viewModel.updateObserver(MyObserver.Empty())
+        viewModel.go()
+        assertEquals(2, observer.list.size)
+        viewModel.updateObserver(observer)
+        viewModel.notifyChanges()
+        assertEquals("3", observer.list[2])
+        assertEquals(3, observer.list.size)
+        viewModel.notifyChanges()
+        assertEquals("3", observer.list[3])
+        assertEquals(4, observer.list.size)
     }
 }
 
