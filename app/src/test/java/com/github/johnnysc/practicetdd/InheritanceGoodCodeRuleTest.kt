@@ -10,7 +10,7 @@ class InheritanceGoodCodeRuleTest {
 
     @Test
     fun `test valid good code`() {
-        val rule = GoodCodeRule.Inheritance()
+        val rule: GoodCodeRule = GoodCodeRule.Inheritance()
         val sourceList = listOf(
             "package com.github.johnnysc.practicetdd\n" +
                     "\n" +
@@ -77,7 +77,7 @@ class InheritanceGoodCodeRuleTest {
 
     @Test
     fun `test invalid good code`() {
-        val rule = GoodCodeRule.Inheritance()
+        val rule: GoodCodeRule = GoodCodeRule.Inheritance()
         val sourceList = listOf(
             "package com.github.johnnysc.practicetdd\n" +
                     "\n" +
