@@ -65,3 +65,5 @@ task/027-custom-livedata своя ливдата в вьюмодельке (http
 
 task/028-inheritance пишем правило чистого кода для принципа наследование для статического анализатора кода (https://youtu.be/F1WCOTDSedA)
 
+task/029-cloudDataSource разные ответы от сервера в ретрофите, хендлим ошибки (https://youtu.be/6fXu5LAUcUU)
+
