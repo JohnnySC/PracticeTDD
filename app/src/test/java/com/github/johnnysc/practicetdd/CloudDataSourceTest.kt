@@ -23,16 +23,15 @@ class CloudDataSourceTest {
     }
 
     @Test
-    fun test_200() = runBlocking {
-        service.response =
-            Response.success("{ \"name\": \"userName\", \"id\": 1001 }".toResponseBody("application/json".toMediaType()))
+    fun test_200(): Unit = runBlocking {
+        service.response = Response.success(UserCloud.Base(name = "userName", id = 1001))
 
         val actual: UserCloud = cloudDataSource.fetch()
         assertEquals(UserCloud.Base(name = "userName", id = 1001), actual)
     }
 
     @Test
-    fun test_401() {
+    fun test_401(): Unit = runBlocking {
         service.response = Response.error(
             401,
             "{ \"errorMessage\": \"Unauthorized user\", \"errorType\": \"UNAUTHORIZED\" }".toResponseBody(
@@ -51,7 +50,7 @@ class CloudDataSourceTest {
     }
 
     @Test
-    fun test_404() {
+    fun test_404(): Unit = runBlocking {
         service.response = Response.error(
             404,
             "{ \"errorMessage\": \"not found\" }".toResponseBody(
