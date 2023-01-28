@@ -49,22 +49,22 @@ class MarkDownTest {
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("with")
+                listOf(MarkDown.ResultItem.StringAndIndex(string = "with", index = 18))
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things**",
-                listOf("with")
+                listOf(MarkDown.ResultItem.StringAndIndex("with", 18))
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with** markdown things",
-                listOf("here is some text ")
+                listOf(MarkDown.ResultItem.StringAndIndex("here is some text ", 0))
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with** markdown things",
-                listOf("with")
+                listOf(MarkDown.ResultItem.StringAndIndex("with", 18))
             ),
         )
 
@@ -86,17 +86,25 @@ class MarkDownTest {
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("with", " markdown ")
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("with", 18),
+                    MarkDown.ResultItem.StringAndIndex(
+                        " markdown ", 22
+                    )
+                )
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("text ", "with")
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("text ", 13),
+                    MarkDown.ResultItem.StringAndIndex("with", 18)
+                )
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("here is")
+                listOf(MarkDown.ResultItem.StringAndIndex("here is", 0))
             )
         )
         sourceList.forEachIndexed { index, source ->
@@ -147,22 +155,22 @@ class MarkDownTest {
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("with")
+                listOf(MarkDown.ResultItem.StringAndIndex("with", 18))
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things*",
-                listOf("with")
+                listOf(MarkDown.ResultItem.StringAndIndex("with", 18))
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with* markdown things",
-                listOf("here is some text ")
+                listOf(MarkDown.ResultItem.StringAndIndex("here is some text ", 0))
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with* markdown things",
-                listOf("with")
+                listOf(MarkDown.ResultItem.StringAndIndex("with", 18))
             ),
         )
 
@@ -184,17 +192,23 @@ class MarkDownTest {
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("with", " markdown ")
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("with", 18),
+                    MarkDown.ResultItem.StringAndIndex(" markdown ", 22)
+                )
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("text ", "with")
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("text ", 13),
+                    MarkDown.ResultItem.StringAndIndex("with", 18)
+                )
             ),
             MarkDown.ResultItem.Base(
                 "someColor",
                 "here is some text with markdown things",
-                listOf("here is")
+                listOf(MarkDown.ResultItem.StringAndIndex("here is", 0))
             )
         )
         sourceList.forEachIndexed { index, source ->
@@ -203,4 +217,34 @@ class MarkDownTest {
         }
     }
     //endregion
+
+    @Test
+    fun test_2_matches() {
+        val markDownParser = MarkDown.Parser.OneSignDelimiter("someColor", '*')
+        val sourceList = listOf(
+            "here is RED some text *RED* markdown things",
+            "here is *RED* some text *RED* markdown things",
+        )
+        val expectedList = listOf(
+            MarkDown.ResultItem.Base(
+                "someColor",
+                "here is RED some text RED markdown things",
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("RED", 22)
+                )
+            ),
+            MarkDown.ResultItem.Base(
+                "someColor",
+                "here is RED some text RED markdown things",
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("RED", 8),
+                    MarkDown.ResultItem.StringAndIndex("RED", 22)
+                )
+            )
+        )
+        sourceList.forEachIndexed { index, source ->
+            val actual = markDownParser.parse(source)
+            assertEquals(expectedList[index], actual)
+        }
+    }
 }
