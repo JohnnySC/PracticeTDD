@@ -67,3 +67,4 @@ task/028-inheritance пишем правило чистого кода для п
 
 task/029-cloudDataSource разные ответы от сервера в ретрофите, хендлим ошибки (https://youtu.be/6fXu5LAUcUU)
 
+task/030-markdown маркдаун парсер свое решение (сложно) (https://youtu.be/KExoqco07ys)
