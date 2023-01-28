@@ -112,6 +112,36 @@ class MarkDownTest {
             assertEquals(expectedList[index], actual)
         }
     }
+
+    @Test
+    fun test_2_matches_2_signs() {
+        val markDownParser = MarkDown.Parser.Base("someColor", "**")
+        val sourceList = listOf(
+            "here is RED some text **RED** markdown things",
+            "here is **RED** some text **RED** markdown things",
+        )
+        val expectedList = listOf(
+            MarkDown.ResultItem.Base(
+                "someColor",
+                "here is RED some text RED markdown things",
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("RED", 22)
+                )
+            ),
+            MarkDown.ResultItem.Base(
+                "someColor",
+                "here is RED some text RED markdown things",
+                listOf(
+                    MarkDown.ResultItem.StringAndIndex("RED", 8),
+                    MarkDown.ResultItem.StringAndIndex("RED", 22)
+                )
+            )
+        )
+        sourceList.forEachIndexed { index, source ->
+            val actual = markDownParser.parse(source)
+            assertEquals(expectedList[index], actual)
+        }
+    }
     //endregion
 
     //region one sign
@@ -216,7 +246,6 @@ class MarkDownTest {
             assertEquals(expectedList[index], actual)
         }
     }
-    //endregion
 
     @Test
     fun test_2_matches() {
@@ -247,34 +276,5 @@ class MarkDownTest {
             assertEquals(expectedList[index], actual)
         }
     }
-
-    @Test
-    fun test_2_matches_2_signs() {
-        val markDownParser = MarkDown.Parser.Base("someColor", "**")
-        val sourceList = listOf(
-            "here is RED some text **RED** markdown things",
-            "here is **RED** some text **RED** markdown things",
-        )
-        val expectedList = listOf(
-            MarkDown.ResultItem.Base(
-                "someColor",
-                "here is RED some text RED markdown things",
-                listOf(
-                    MarkDown.ResultItem.StringAndIndex("RED", 22)
-                )
-            ),
-            MarkDown.ResultItem.Base(
-                "someColor",
-                "here is RED some text RED markdown things",
-                listOf(
-                    MarkDown.ResultItem.StringAndIndex("RED", 8),
-                    MarkDown.ResultItem.StringAndIndex("RED", 22)
-                )
-            )
-        )
-        sourceList.forEachIndexed { index, source ->
-            val actual = markDownParser.parse(source)
-            assertEquals(expectedList[index], actual)
-        }
-    }
+    //endregion
 }
