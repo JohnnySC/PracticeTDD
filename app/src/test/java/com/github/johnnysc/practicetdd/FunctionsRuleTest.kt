@@ -101,4 +101,86 @@ class FunctionsRuleTest {
             assertEquals(false, goodCodeRule.isValid(text = it))
         }
     }
+
+    @Test
+    fun test_function_in_class_valid() {
+        val goodCodeRule: GoodCodeRule = GoodCodeRule.Functions()
+        val sourceList = listOf(
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "class A : X {\n" +
+                    "    \n" +
+                    "    override fun x() {\n" +
+                    "        println(\"hello\")\n" +
+                    "    }\n" +
+                    "}",
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "abstract class A(\n" +
+                    "    private val logging: Logging\n" +
+                    ") {\n" +
+                    "\n" +
+                    "    protected fun handle(text: String) {\n" +
+                    "        logging.log(\"tag\", text)\n" +
+                    "    }\n" +
+                    "}",
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "abstract class A {\n" +
+                    "\n" +
+                    "    protected abstract fun handleSuccess(text: Char)\n" +
+                    "}"
+        )
+        sourceList.forEach {
+            assertEquals(true, goodCodeRule.isValid(text = it))
+        }
+    }
+
+    @Test
+    fun test_function_in_class_invalid() {
+        val goodCodeRule: GoodCodeRule = GoodCodeRule.Functions()
+        val sourceList = listOf(
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "class A {\n" +
+                    "\n" +
+                    "    fun x() {\n" +
+                    "        println(\"hello\")\n" +
+                    "    }\n" +
+                    "}",
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "class A {\n" +
+                    "\n" +
+                    "    protected fun y() {\n" +
+                    "        println(\"hello\")\n" +
+                    "    }\n" +
+                    "}",
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "class A {\n" +
+                    "\n" +
+                    "    private fun y() {\n" +
+                    "        println(\"hello\")\n" +
+                    "    }\n" +
+                    "}",
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "abstract class A {\n" +
+                    "\n" +
+                    "    abstract fun handleSuccess(text: Char)\n" +
+                    "}",
+            "package com.github.johnnysc.practicetdd\n" +
+                    "\n" +
+                    "abstract class A {\n" +
+                    "\n" +
+                    "    private fun handleSuccess(text: Char) {\n" +
+                    "        \n" +
+                    "    }\n" +
+                    "}"
+        )
+        sourceList.forEach {
+            assertEquals(false, goodCodeRule.isValid(text = it))
+        }
+    }
 }
