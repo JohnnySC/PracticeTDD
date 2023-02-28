@@ -12,7 +12,7 @@ class NodeBuilderTest {
     fun `test head`() {
         val builder: MyNode.Builder = MyNode.Builder()
         val actual: MyNode = builder.build()
-        val expected: MyNode = MyNode.Head(id = 0)
+        val expected: MyNode = MyNode.Head(id = 0, value = "")
         assertEquals(expected, actual)
         assertEquals(false, actual.hasParent())
     }
