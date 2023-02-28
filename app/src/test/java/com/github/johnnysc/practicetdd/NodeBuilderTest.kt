@@ -30,7 +30,8 @@ class NodeBuilderTest {
         actual = builder
             .value(value = "item one")
             .build()
-        expected = MyNode.Base(id = 1, parent = MyNode.Head(id = 0), value = "item one")
+        expected =
+            MyNode.Base(id = 1, parent = MyNode.Head(id = 0, value = "header"), value = "item one")
         assertEquals(expected, actual)
         assertEquals(true, actual.hasParent())
     }
@@ -48,7 +49,8 @@ class NodeBuilderTest {
         actual = builder
             .value(value = "item one")
             .build()
-        expected = MyNode.Base(id = 1, parent = MyNode.Head(id = 0), value = "item one")
+        expected =
+            MyNode.Base(id = 1, parent = MyNode.Head(id = 0, value = "header"), value = "item one")
         assertEquals(expected, actual)
         assertEquals(true, actual.hasParent())
 
@@ -57,7 +59,7 @@ class NodeBuilderTest {
             .build()
         expected = MyNode.Base(
             id = 2,
-            parent = MyNode.Base(id = 1, parent = MyNode.Head(id = 0), value = "item one"),
+            parent = MyNode.Base(id = 1, parent = MyNode.Head(id = 0, value = "header"), value = "item one"),
             value = "item two"
         )
         assertEquals(expected, actual)
