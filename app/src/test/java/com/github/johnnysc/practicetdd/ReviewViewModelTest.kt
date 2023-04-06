@@ -16,7 +16,7 @@ class ReviewViewModelTest {
         val viewModel = ReviveViewModel(communication = communication)
 
         //first start of the process
-        viewModel.restore(bundle)
+        viewModel.restore(bundle = bundle)
         assertEquals(true, bundle.isEmpty())
         assertEquals(ReviveUiState.Initial, communication.value)
 
@@ -25,7 +25,7 @@ class ReviewViewModelTest {
         assertEquals(ReviveUiState.Secondary(text = "some input"), communication.value)
 
         //imitate death of the process
-        viewModel.save(bundle)
+        viewModel.save(bundle = bundle)
         assertEquals(false, bundle.isEmpty())
         val newCommunication = FakeCommunication()
         val newViewModel = ReviveViewModel(communication = newCommunication)
