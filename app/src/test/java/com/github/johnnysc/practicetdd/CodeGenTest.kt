@@ -189,7 +189,11 @@ class CodeGenTest {
                     "    private val interactor: InitialInteractor,\n" +
                     "    private val communication: InitialCommunication,\n" +
                     "    private val navigation: NavigationCommunication\n" +
-                    ")"
+                    ") {\n" +
+                    "\n" +
+                    "fun init() {}\n" +
+                    "fun retry() {}\n" +
+                    "}"
         )
         val actual: List<String> = codeGen.parse(source = source)
         assertEquals(expected, actual)
