@@ -183,7 +183,6 @@ class CodeGenTest {
             "package ru.easycode.words504.initial.presentation\n" +
                     "\n" +
                     "import ru.easycode.words504.initial.domain.InitialInteractor\n" +
-                    "import ru.easycode.words504.initial.presentation.NavigationCommunication\n" +
                     "\n" +
                     "class InitialViewModel(\n" +
                     "    private val interactor: InitialInteractor,\n" +
