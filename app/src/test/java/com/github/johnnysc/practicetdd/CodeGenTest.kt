@@ -40,7 +40,6 @@ class CodeGenTest {
             "            interactor = interactor,\n" +
             "            communication = communication,\n" +
             "            navigation = navigation,\n" +
-            "            dispatchers = TestDispatchersList()\n" +
             "        )\n" +
             "    }\n" +
             "\n" +
@@ -180,7 +179,17 @@ class CodeGenTest {
                     "interface NavigationCommunication {\n" +
                     "\n" +
                     "    fun map(source: Screen)\n" +
-                    "}"
+                    "}",
+            "package ru.easycode.words504.initial.presentation\n" +
+                    "\n" +
+                    "import ru.easycode.words504.initial.domain.InitialInteractor\n" +
+                    "import ru.easycode.words504.presentation.NavigationCommunication\n" +
+                    "\n" +
+                    "class InitialViewModel(\n" +
+                    "    private val interactor: InitialInteractor,\n" +
+                    "    private val communication: InitialCommunication,\n" +
+                    "    private val navigation: NavigationCommunication\n" +
+                    ")"
         )
         val actual: List<String> = codeGen.parse(source = source)
         assertEquals(expected, actual)
