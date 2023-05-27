@@ -10,20 +10,20 @@ class TwoFieldsObservableTest {
 
     @Test
     fun test() {
-        val observable = FakeTwoFieldsObjectObserver()
-        val observer = TwoFieldsObservable(observable = observable)
+        val observer = FakeTwoFieldsObjectObserver()
+        val observable = TwoFieldsObservable(observer = observer)
 
-        observer.accept(name = "firstName")
-        observable.checkNotifyCalledTimes(0)
-        observer.accept(id = 1)
-        assertEquals(TwoFieldsObject(name = "firstName", id = 1), observable.list[0])
-        observable.checkNotifyCalledTimes(1)
+        observable.accept(name = "firstName")
+        observer.checkNotifyCalledTimes(0)
+        observable.accept(id = 1)
+        assertEquals(TwoFieldsObject(name = "firstName", id = 1), observer.list[0])
+        observer.checkNotifyCalledTimes(1)
 
-        observer.accept(id = 2)
-        observable.checkNotifyCalledTimes(1)
-        observer.accept(name = "secondName")
-        assertEquals(TwoFieldsObject(name = "secondName", id = 2), observable.list[1])
-        observable.checkNotifyCalledTimes(2)
+        observable.accept(id = 2)
+        observer.checkNotifyCalledTimes(1)
+        observable.accept(name = "secondName")
+        assertEquals(TwoFieldsObject(name = "secondName", id = 2), observer.list[1])
+        observer.checkNotifyCalledTimes(2)
     }
 
     private class FakeTwoFieldsObjectObserver : TwoFieldsObjectObserver {
