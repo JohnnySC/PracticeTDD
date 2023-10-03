@@ -81,6 +81,6 @@ task/035-codegen-part-one кодогенератор: пишем код, кот�
 
 task/036-multithreading-observer многопоточный обсервер патерн : 2 входа 1 выход (https://youtu.be/znEFXrT82vs)
 
-task/037-login-view-model пишем вьюмодель на логин (https://youtu.be/L9Dt5ERXf-E)
+task/037-login-view-model пишем вьюмодель на логин (https://youtu.be/L9Dt5ERXf-E https://youtu.be/UFQUnyBKJMI)
 
 
