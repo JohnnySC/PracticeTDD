@@ -83,4 +83,6 @@ task/036-multithreading-observer многопоточный обсервер п�
 
 task/037-login-view-model пишем вьюмодель на логин (https://youtu.be/L9Dt5ERXf-E https://youtu.be/UFQUnyBKJMI)
 
+task/038-login-view-model-chain цепочка обязанностей в логин вьюмодель из задачи 37 (https://youtu.be/QXwggW1FNcY)
+
 
