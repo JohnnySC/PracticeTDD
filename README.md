@@ -85,4 +85,5 @@ task/037-login-view-model пишем вьюмодель на логин (https:/
 
 task/038-login-view-model-chain цепочка обязанностей в логин вьюмодель из задачи 37 (https://youtu.be/QXwggW1FNcY)
 
+task/039-mediator mediator pattern (https://youtu.be/Apf8bj4lIfk)
 
