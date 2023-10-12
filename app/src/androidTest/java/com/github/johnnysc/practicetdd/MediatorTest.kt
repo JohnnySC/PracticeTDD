@@ -12,6 +12,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * Also check out one more MediatorTest in test package (junit test)
+ */
 @RunWith(AndroidJUnit4::class)
 class MediatorTest {
 

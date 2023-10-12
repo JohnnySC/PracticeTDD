@@ -11,21 +11,21 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <Button
+    <com.github.johnnysc.practicetdd.ChoiceButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="@string/choice_1" />
 
-    <Button
+    <com.github.johnnysc.practicetdd.ChoiceButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="@string/choice_2" />
 
-    <Button
+    <com.github.johnnysc.practicetdd.ChoiceButton
         android:id="@+id/thirdChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
