@@ -87,3 +87,5 @@ task/038-login-view-model-chain цепочка обязанностей в ло�
 
 task/039-mediator mediator pattern (https://youtu.be/Apf8bj4lIfk)
 
+task/040-mediator-ui-test mediator pattern 2 tests: ui test and unit test (https://youtu.be/_CGXMoaBl_0)
+
