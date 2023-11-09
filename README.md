@@ -89,3 +89,6 @@ task/039-mediator mediator pattern (https://youtu.be/Apf8bj4lIfk)
 
 task/040-mediator-ui-test mediator pattern 2 tests: ui test and unit test (https://youtu.be/_CGXMoaBl_0)
 
+task/041-comparable diffutil list item to compare (https://youtu.be/DuVVnBbI4qw)
+
+
