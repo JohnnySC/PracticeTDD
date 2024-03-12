@@ -30,7 +30,7 @@ class CloudFirstRepositoryTest {
         cloudDataSource.givesSuccess()
         cacheDataSource.empty()
 
-        val actual: List<Int> = repository.load()
+        val actual: LoadResult = repository.load()
         val expected: LoadResult = LoadResult.Success(data = listOf(4, 5))
         Assert.assertEquals(expected, actual)
 
@@ -42,7 +42,7 @@ class CloudFirstRepositoryTest {
         cloudDataSource.givesError()
         cacheDataSource.notEmpty()
 
-        val actual: List<Int> = repository.load()
+        val actual: LoadResult = repository.load()
         val expected: LoadResult = LoadResult.Success(data = listOf(1, 2, 3))
         Assert.assertEquals(expected, actual)
     }
@@ -52,7 +52,7 @@ class CloudFirstRepositoryTest {
         cloudDataSource.givesError()
         cacheDataSource.empty()
 
-        val actual: List<Int> = repository.load()
+        val actual: LoadResult = repository.load()
         val expected: LoadResult = LoadResult.Error(message = "no internet")
         Assert.assertEquals(expected, actual)
 
