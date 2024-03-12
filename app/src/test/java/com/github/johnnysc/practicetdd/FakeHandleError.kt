@@ -12,6 +12,6 @@ class FakeHandleError  : HandleError {
     }
 
     fun check(expectedError: Exception) {
-        assertEquals(expectedError, actualError)
+        assertEquals(expectedError::class, actualError::class)
     }
 }
