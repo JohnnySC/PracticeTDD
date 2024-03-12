@@ -1,7 +1,11 @@
 package com.github.johnnysc.practicetdd
 
+import com.github.johnnysc.practicetdd.FakeCacheDataSource.Companion.CACHE_LOAD
+import com.github.johnnysc.practicetdd.FakeCacheDataSource.Companion.CACHE_SAVE
+import com.github.johnnysc.practicetdd.FakeCloudDataSource.Companion.CLOUD
+import com.github.johnnysc.practicetdd.FakeHandleError.Companion.HANDLE
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import java.net.UnknownHostException
@@ -12,12 +16,14 @@ class CloudFirstRepositoryTest {
     private lateinit var cloudDataSource: FakeCloudDataSource
     private lateinit var handleError: FakeHandleError
     private lateinit var repository: ListRepository
+    private lateinit var order: Order
 
     @Before
     fun setup() {
-        cacheDataSource = FakeCacheDataSource()
-        cloudDataSource = FakeCloudDataSource()
-        handleError = FakeHandleError()
+        order = Order(mutableListOf())
+        cacheDataSource = FakeCacheDataSource(order = order)
+        cloudDataSource = FakeCloudDataSource(order = order)
+        handleError = FakeHandleError(order = order)
         repository = ListRepository.CloudFirst(
             cacheDataSource = cacheDataSource,
             cloudDataSource = cloudDataSource,
@@ -32,9 +38,11 @@ class CloudFirstRepositoryTest {
 
         val actual: LoadResult = repository.load()
         val expected: LoadResult = LoadResult.Success(data = listOf(4, 5))
-        Assert.assertEquals(expected, actual)
+        assertEquals(expected, actual)
 
         cacheDataSource.checkSaved(expected = listOf(4, 5))
+
+        assertEquals(Order(mutableListOf(CLOUD, CACHE_SAVE)), order)
     }
 
     @Test
@@ -44,7 +52,9 @@ class CloudFirstRepositoryTest {
 
         val actual: LoadResult = repository.load()
         val expected: LoadResult = LoadResult.Success(data = listOf(1, 2, 3))
-        Assert.assertEquals(expected, actual)
+        assertEquals(expected, actual)
+
+        assertEquals(Order(mutableListOf(CLOUD, CACHE_LOAD)), order)
     }
 
     @Test
@@ -54,8 +64,10 @@ class CloudFirstRepositoryTest {
 
         val actual: LoadResult = repository.load()
         val expected: LoadResult = LoadResult.Error(message = "no internet")
-        Assert.assertEquals(expected, actual)
+        assertEquals(expected, actual)
 
         handleError.check(UnknownHostException())
+
+        assertEquals(Order(mutableListOf(CLOUD, CACHE_LOAD, HANDLE)), order)
     }
 }
