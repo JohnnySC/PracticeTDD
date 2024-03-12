@@ -92,3 +92,6 @@ task/040-mediator-ui-test mediator pattern 2 tests: ui test and unit test (https
 task/041-comparable diffutil list item to compare (https://youtu.be/DuVVnBbI4qw)
 
 task/042-multithreading-coroutines run multiple coroutines in repository (https://youtu.be/5vwoqElj0bc)
+
+task/043-repository-test CloudFirst and CacheFirst repository tests (https://youtu.be/mVm6UW8vu-w)
+
