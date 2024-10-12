@@ -4,12 +4,13 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    namespace = "com.github.johnnysc.practicetdd"
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.github.johnnysc.practicetdd"
         minSdk 21
-        targetSdk 32
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
