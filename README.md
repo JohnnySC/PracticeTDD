@@ -95,3 +95,5 @@ task/042-multithreading-coroutines run multiple coroutines in repository (https:
 
 task/043-repository-test CloudFirst and CacheFirst repository tests (https://youtu.be/mVm6UW8vu-w)
 
+task/044-login_interactor-test Max attempts logic https://youtu.be/g5bRENIa9yw
+
