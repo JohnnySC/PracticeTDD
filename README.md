@@ -97,3 +97,5 @@ task/043-repository-test CloudFirst and CacheFirst repository tests (https://you
 
 task/044-login_interactor-test Max attempts logic https://youtu.be/g5bRENIa9yw
 
+task/045-state-pattern State Pattern TDD https://youtu.be/TkfzrP733qk
+
