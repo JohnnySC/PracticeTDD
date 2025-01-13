@@ -41,6 +41,6 @@ private class FakeLogging : Logging {
 private data object FakeInitialState : State {
 
     override fun next(context: StateContext.Update) {
-        context.updateState(State.RequireLogin)
+        context.updateState(state = State.RequireLogin)
     }
 }
