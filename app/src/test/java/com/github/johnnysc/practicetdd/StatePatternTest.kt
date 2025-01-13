@@ -8,7 +8,7 @@ class StatePatternTest {
     @Test
     fun test() {
         val logging = FakeLogging()
-        val stateContext = StateContext(state = FakeInitialState)
+        val stateContext: StateContext.Actions = StateContext.Base(state = FakeInitialState)
         stateContext.log(logging)
         logging.assertEvent("FakeInitialState")
 
@@ -40,7 +40,7 @@ private class FakeLogging : Logging {
 
 private data object FakeInitialState : State {
 
-    override fun next(context: StateContext) {
+    override fun next(context: StateContext.Update) {
         context.updateState(State.RequireLogin)
     }
 }
