@@ -99,5 +99,5 @@ task/044-login_interactor-test Max attempts logic https://youtu.be/g5bRENIa9yw
 
 task/045-state-pattern State Pattern TDD https://youtu.be/TkfzrP733qk
 
-task/046-compose-revive-view-model Compose ViewModel Revive process death (youtube link soon)
+task/046-compose-revive-view-model Compose ViewModel Revive process death https://youtu.be/WtJEBGCQl5o
 
