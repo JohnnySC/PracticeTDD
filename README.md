@@ -101,3 +101,4 @@ task/045-state-pattern State Pattern TDD https://youtu.be/TkfzrP733qk
 
 task/046-compose-revive-view-model Compose ViewModel Revive process death https://youtu.be/WtJEBGCQl5o
 
+task/047-runasync_list multiple calls to repo in parallel https://www.youtube.com/watch?v=1g1c4uO2DJ0
